@@ -23,5 +23,5 @@ How to use the Morse Code Translator:
 1) Launch the program.
 2) Choose a Menu option
 3) Input the phrase you want translated
-   The Translation will be shown in the console.
-4) Try again or quit.
+4) The Translation will be shown in the console.
+5) Try again or quit.
