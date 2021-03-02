@@ -1,0 +1,80 @@
+package morseCode;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+public class main {
+	
+	public static void main(String[] args) {
+		//building of the tree - will be unnecessary later -
+		MorseNode a = new MorseNode('a', ".-");
+		MorseNode b = new MorseNode('b', "-...");
+		MorseNode c = new MorseNode('c', "-.-.");
+		MorseNode d = new MorseNode('d', "-..");
+		MorseNode e = new MorseNode('e', ".");
+		MorseNode f = new MorseNode('f', "..-.");
+		MorseNode g = new MorseNode('g', "--.");	
+		MorseNode h = new MorseNode('h', "....");
+		MorseNode i = new MorseNode('i', "..");
+		MorseNode j = new MorseNode('j', ".---");
+		MorseNode k = new MorseNode('k', "-.-");
+		MorseNode l = new MorseNode('l', ".-..");
+		MorseNode m = new MorseNode('m', "--");
+		MorseNode n = new MorseNode('n', "-.");
+		MorseNode o = new MorseNode('o', "---");
+		MorseNode p = new MorseNode('p', ".--.");
+		MorseNode q = new MorseNode('q', "--.-");
+		MorseNode r = new MorseNode('r', ".-.");
+		MorseNode s = new MorseNode('s', "...");
+		MorseNode t = new MorseNode('t', "-");
+		MorseNode u = new MorseNode('u', "..-");
+		MorseNode v = new MorseNode('v', "...-");
+		MorseNode w = new MorseNode('w',".--");
+		MorseNode x = new MorseNode('x', "-..-");
+		MorseNode y = new MorseNode('y', "-.--");
+		MorseNode z = new MorseNode('z', "--..");
+		MorseNode root = new MorseNode(' '," ");
+		
+		//building of the tree - will be unnecessary later -
+		root.left = e; root.right = t;
+		e.left = i; e.right = a; t.left = n; t.right = m;
+		i.left = s; i.right = u; a.left = r; a.right = w; n.left = d; n.right = k; m.left = g; m .right = o;
+		s.left = h; s.right = v; u.left = f; r.left = l; w.left = p; w.right = j; 
+		d.left = b; d.right = x; k.left = c; k.right = y; g.left = z; g.right = q;
+		
+		//actual start
+		//FileInputStream inputFile = new FileInputStream("Morse_Code.txt"); //For Aleksis
+		Scanner scnr = new Scanner(System.in);
+		
+		//Menu for User to Pick
+		String UserMenuPrompt = "\n          Welcome to the MorseCode Translator\nPlease Choose your Menu Option by choosing a Number to enter.";
+		String UserMenuOptions = " 1. Enter an English message to Translate into MorseCode\n 2. Enter a MorseCode message to Translate into English\n 3. Quit\nEnter here:";
+		boolean systemRunning = true;
+		String messageToTranslate;
+		
+		while (systemRunning){
+			System.out.println(UserMenuPrompt);		//prints the title of the Translator 
+			System.out.println(UserMenuOptions);	//prints the menu options for User
+			int userChoice = scnr.nextInt();		//user's input number
+			
+			if (userChoice == 1) {
+				System.out.print("Enter Message here: ");
+				messageToTranslate = scnr.next();
+				System.out.print("Translation: ");
+				MorseNode.encode(messageToTranslate, root);
+			}
+			else if (userChoice == 2) {
+				System.out.print("Enter Message here: ");
+				messageToTranslate = scnr.next();
+				//the other method to call
+			}
+			else if (userChoice == 3) {
+				System.out.println("Thank you for using the MorseCode Translator. Goodbye.");
+				systemRunning = false;
+			}
+			else {
+				System.out.println("Please Pick a Menu Option. You'll be redirected.\n");
+			}
+		}
+	}
+}
