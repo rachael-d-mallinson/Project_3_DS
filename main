@@ -1,49 +1,17 @@
 package morseCode;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class main {
 	
-	public static void main(String[] args) {
-		//building of the tree - will be unnecessary later -
-		MorseNode a = new MorseNode('a', ".-");
-		MorseNode b = new MorseNode('b', "-...");
-		MorseNode c = new MorseNode('c', "-.-.");
-		MorseNode d = new MorseNode('d', "-..");
-		MorseNode e = new MorseNode('e', ".");
-		MorseNode f = new MorseNode('f', "..-.");
-		MorseNode g = new MorseNode('g', "--.");	
-		MorseNode h = new MorseNode('h', "....");
-		MorseNode i = new MorseNode('i', "..");
-		MorseNode j = new MorseNode('j', ".---");
-		MorseNode k = new MorseNode('k', "-.-");
-		MorseNode l = new MorseNode('l', ".-..");
-		MorseNode m = new MorseNode('m', "--");
-		MorseNode n = new MorseNode('n', "-.");
-		MorseNode o = new MorseNode('o', "---");
-		MorseNode p = new MorseNode('p', ".--.");
-		MorseNode q = new MorseNode('q', "--.-");
-		MorseNode r = new MorseNode('r', ".-.");
-		MorseNode s = new MorseNode('s', "...");
-		MorseNode t = new MorseNode('t', "-");
-		MorseNode u = new MorseNode('u', "..-");
-		MorseNode v = new MorseNode('v', "...-");
-		MorseNode w = new MorseNode('w',".--");
-		MorseNode x = new MorseNode('x', "-..-");
-		MorseNode y = new MorseNode('y', "-.--");
-		MorseNode z = new MorseNode('z', "--..");
-		MorseNode root = new MorseNode(' '," ");
+	public static void main(String[] args) throws IOException {
+		FileInputStream inputFile = new FileInputStream("Morse_Code.txt"); 
+		Scanner scanner = new Scanner(inputFile);
+		MorseNode root = new MorseNode(); 
+		MorseCodeTree.buildMorseCodeTree(scanner, root);
 		
-		//building of the tree - will be unnecessary later -
-		root.left = e; root.right = t;
-		e.left = i; e.right = a; t.left = n; t.right = m;
-		i.left = s; i.right = u; a.left = r; a.right = w; n.left = d; n.right = k; m.left = g; m .right = o;
-		s.left = h; s.right = v; u.left = f; r.left = l; w.left = p; w.right = j; 
-		d.left = b; d.right = x; k.left = c; k.right = y; g.left = z; g.right = q;
-		
-		//actual start
-		//FileInputStream inputFile = new FileInputStream("Morse_Code.txt"); //For Aleksis
 		Scanner scnr = new Scanner(System.in);
 		
 		//Menu for User to Pick
@@ -61,15 +29,15 @@ public class main {
 				System.out.print("Enter Message here: ");
 				messageToTranslate = scnr.next();
 				System.out.print("Translation: ");
-				MorseNode.encode(messageToTranslate, root);
+				MorseCodeTree.encode(messageToTranslate, root);
 				System.out.println("Translated back: ");
 				//otherFunction(MorseNode.encode(messageToTranslate));
 			}
 			else if (userChoice == 2) {
-				System.out.print("Enter Message here: ");
-				messageToTranslate = scnr.next();
-				//the other method to call
-				System.out.println("Translated back: ");
+				System.out.println("Enter Message here: ");
+				messageToTranslate = scnr.nextLine();
+				System.out.print("Translation: ");
+				MorseCodeTree.decode(messageToTranslate, root);
 				//MorseNode.encode(otherFunction(messageToTranslate), root));
 			}
 			else if (userChoice == 3) {
