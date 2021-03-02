@@ -18,11 +18,11 @@ public class main {
 		String UserMenuPrompt = "\n          Welcome to the MorseCode Translator\nPlease Choose your Menu Option by choosing a Number to enter.";
 		String UserMenuOptions = " 1. Enter an English message to Translate into MorseCode\n 2. Enter a MorseCode message to Translate into English\n 3. Quit\nEnter here:";
 		boolean systemRunning = true;
-		String messageToTranslate;
+		String messageToTranslate = "";
 		
 		while (systemRunning){
 			System.out.println(UserMenuPrompt);		//prints the title of the Translator 
-			System.out.println(UserMenuOptions);	//prints the menu options for User
+			System.out.println(UserMenuOptions);		//prints the menu options for User
 			int userChoice = scnr.nextInt();		//user's input number
 			
 			if (userChoice == 1) {
@@ -35,9 +35,14 @@ public class main {
 			}
 			else if (userChoice == 2) {
 				System.out.println("Enter Message here: ");
-				messageToTranslate = scnr.nextLine();
+				StringBuilder message = new StringBuilder();
+				while (messageToTranslate.isEmpty()) {
+					message.append(scnr.nextLine());
+					messageToTranslate = message.toString();
+				}
 				System.out.print("Translation: ");
 				MorseCodeTree.decode(messageToTranslate, root);
+				messageToTranslate = "";
 				//MorseNode.encode(otherFunction(messageToTranslate), root));
 			}
 			else if (userChoice == 3) {
