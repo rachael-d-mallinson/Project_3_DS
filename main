@@ -62,11 +62,15 @@ public class main {
 				messageToTranslate = scnr.next();
 				System.out.print("Translation: ");
 				MorseNode.encode(messageToTranslate, root);
+				System.out.println("Translated back: ");
+				//otherFunction(MorseNode.encode(messageToTranslate));
 			}
 			else if (userChoice == 2) {
 				System.out.print("Enter Message here: ");
 				messageToTranslate = scnr.next();
 				//the other method to call
+				System.out.println("Translated back: ");
+				//MorseNode.encode(otherFunction(messageToTranslate), root));
 			}
 			else if (userChoice == 3) {
 				System.out.println("Thank you for using the MorseCode Translator. Goodbye.");
