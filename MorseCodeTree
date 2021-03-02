@@ -67,7 +67,7 @@ public class MorseCodeTree {
 	}
 	
 	/** 
-	 * EnmCodes a message from English into MorseCode
+	 * EnCodes a message from English into MorseCode
 	 * @param currentChar: current character to search the binary tree for
 	 * @param root: root of the binary tree
 	 */
