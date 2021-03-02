@@ -2,58 +2,19 @@ package morseCode;
 
 public class MorseNode {
 	
-		//data fields 
-		public char label;
-		public String mCode;
-		public MorseNode left, right;
+	//data fields 
+	public char label;
+	public String mCode;
+	public MorseNode left, right;
 		
-		//constructors 
-		public MorseNode() {} //default
-		public MorseNode(char a, String newCode) {label = a; mCode = newCode;}
-		public MorseNode(char a, String newCode, MorseNode leftChild,MorseNode rightChild ) {
-			label = a;
-			mCode = newCode;
-			left = leftChild;
-			right = rightChild;
-		}
-		
-		//methods
-		
-		/** 
-		 * Encodes a message from English into MorseCode
-		 * @param currentChar: current character to search the binary tree for
-		 * @param root: root of the binary tree
-		 */
-		public static void encode(char currentChar, MorseNode root) {
-			//base case	
-			if (root != null) {
-				//if the character matches the label, print the MorseCode
-				if (currentChar == root.label) {
-					System.out.print(root.mCode);
-	
-				}
-				//recursively call the method with Left and Right children
-				encode(currentChar, root.left);
-				encode(currentChar, root.right);
-			}
-		}
-		
-		/**
-		 * wrapper method for encode method
-		 * @param message: message to encode into MorseCode
-		 * @param root: root of binary tree to search
-		 */
-		public static void encode(String message, MorseNode root) {
-			//make the message lower case, so that it will always be read
-			message = message.toLowerCase();
-			
-			//call the method for every letter in the message
-			for(int index = 0; index < message.length(); index++) {
-				char currentChar = message.charAt(index);
-				encode(currentChar, root);
-			}
-			System.out.println();
-		
-		}
+	//constructors 
+	public MorseNode() {} //default
+	public MorseNode(char a, String newCode) {label = a; mCode = newCode;}
+	public MorseNode(char a, String newCode, MorseNode leftChild,MorseNode rightChild ) {
+		label = a;
+		mCode = newCode;
+		left = leftChild;
+		right = rightChild;
+	}
 		
 }
