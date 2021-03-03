@@ -27,10 +27,14 @@ public class main {
 			
 			if (userChoice == 1) {
 				System.out.print("Enter Message here: ");
-				messageToTranslate = scnr.next();
+				StringBuilder message = new StringBuilder();
+				while (messageToTranslate.isEmpty()) {
+					message.append(scnr.nextLine());
+					messageToTranslate = message.toString();
+				}
 				System.out.print("Translation: ");
 				MorseCodeTree.encode(messageToTranslate, root);
-				System.out.println("Translated back: ");
+				messageToTranslate = "";
 				//otherFunction(MorseNode.encode(messageToTranslate));
 			}
 			else if (userChoice == 2) {
